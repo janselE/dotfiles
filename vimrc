@@ -15,15 +15,14 @@ Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
-
 "required to used pathogen
-execute pathogen#infect()
+"execute pathogen#infect()
 
 "This is to have the line numbers
 set number
 
-" This allows the cursor be placed where I click
-" set mouse=a
+"This allows the cursor be placed where I click
+"set mouse=a
 
 "This is to use jk instead of using <esc>
 inoremap jk <esc>
@@ -41,7 +40,7 @@ set rnu
 set cursorline
 
 "This select the colorsheme that I want.
-" colorscheme nord
+"colorscheme nord
 
 "This line remove italic so the theme does not get messed up.
 let g:dracula_italic=0
@@ -53,10 +52,10 @@ syntax on
 "enables indent
 filetype plugin indent on
 
-" For the airlines I used https://github.com/tpope/vim-pathogen used it and
-" the instuctions are there.
+"For the airlines I used https://github.com/tpope/vim-pathogen used it and
+"the instuctions are there.
 
-" This is for the error feedbacks
+"This is for the error feedbacks
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -66,26 +65,19 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Remapping the way of moving throught the buffers
+"Mapping the way of moving throught the buffers
 nnoremap  <C-j> <C-w><C-j>
 nnoremap  <C-k> <C-w><C-k>
 nnoremap  <C-l> <C-w><C-l>
 nnoremap  <C-h> <C-w><C-h>
 
-" For the NERDTree I installed git clone
-" https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+"For the NERDTree I installed git clone
+"https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 map <C-n> :NERDTreeToggle<CR>
 
 " To install Easymotion git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
 
 
-" This will set the folding level, to fold something use za, to unfold zo and
-" to unfold everything use zR
+"This will set the folding level, to fold something use za, to unfold zo and
+"to unfold everything use zR
 set foldmethod=syntax
-
-
-
-
-
-
-
