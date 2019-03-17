@@ -1,7 +1,20 @@
 " source ~/dotfiles/vimrc
 
-"To download stuff for vim you need to install 
+"To download stuff for vim you need to install
 "Python, Pathogen and curl
+
+"Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins 
+"To install something new, run :PlugInstall in vim
+call plug#begin()
+
+Plug 'dracula/vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline' 
+Plug 'scrooloose/syntastic'
+Plug 'easymotion/vim-easymotion' 
+
+call plug#end()
+
 
 "required to used pathogen
 execute pathogen#infect()
@@ -10,9 +23,9 @@ execute pathogen#infect()
 set number
 
 " This allows the cursor be placed where I click
-" set mouse=a 
+" set mouse=a
 
-"This is to use jk instead of using <esc> 
+"This is to use jk instead of using <esc>
 inoremap jk <esc>
 
 "This is another mapp, instead of using \ we can use the space bar
@@ -41,7 +54,7 @@ syntax on
 filetype plugin indent on
 
 " For the airlines I used https://github.com/tpope/vim-pathogen used it and
-" the instuctions are there. 
+" the instuctions are there.
 
 " This is for the error feedbacks
 set statusline+=%#warningmsg#
@@ -55,9 +68,9 @@ let g:syntastic_check_on_wq = 0
 
 " Remapping the way of moving throught the buffers
 nnoremap  <C-j> <C-w><C-j>
-nnoremap  <C-k> <C-w><C-k> 
-nnoremap  <C-l> <C-w><C-l> 
-nnoremap  <C-h> <C-w><C-h> 
+nnoremap  <C-k> <C-w><C-k>
+nnoremap  <C-l> <C-w><C-l>
+nnoremap  <C-h> <C-w><C-h>
 
 " For the NERDTree I installed git clone
 " https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
