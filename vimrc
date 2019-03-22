@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline' 
 Plug 'scrooloose/syntastic'
 Plug 'easymotion/vim-easymotion' 
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -78,6 +79,6 @@ map <C-n> :NERDTreeToggle<CR>
 " To install Easymotion git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
 
 
-"This will set the folding level, to fold something use za, to unfold zo and
-"to unfold everything use zR
+" This will set the folding level, to fold something use za, to unfold zo and
+" to unfold everything use zR
 set foldmethod=syntax
