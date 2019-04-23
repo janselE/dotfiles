@@ -3,30 +3,41 @@
 "To download stuff for vim you need to install
 "Python, Pathogen and curl
 
-"Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins 
+"Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins
 "To install something new, run :PlugInstall in vim
 call plug#begin()
 
 Plug 'dracula/vim'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline' 
+Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/syntastic'
-Plug 'easymotion/vim-easymotion' 
+Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'Yggdroot/indentLine'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'
+
 "required to used pathogen
-"execute pathogen#infect()
+execute pathogen#infect('~/.vim/bundle/{}')
+
+set listchars=tab:\.\
+set list
 
 "This is to have the line numbers
 set number
 
 "This allows the cursor be placed where I click
-"set mouse=a
+set mouse=a
 
 "This is to use jk instead of using <esc>
 inoremap jk <esc>
+inoremap <S-Tab> <C-n>
 
 "This is another mapp, instead of using \ we can use the space bar
 let mapleader = "\<Space>"
@@ -38,14 +49,18 @@ set showcmd
 set rnu
 
 "This show the line that I am writing with highlight
-set cursorline
+"set cursorline
+set cursorcolumn
+
+"This highlight my text while I am writing
+set incsearch
 
 "This select the colorsheme that I want.
 "colorscheme nord
 
 "This line remove italic so the theme does not get messed up.
-let g:dracula_italic=0
-color dracula
+"let g:dracula_italic=0
+"color dracula
 
 "enables syntax coloring
 syntax on
@@ -55,7 +70,7 @@ filetype plugin indent on
 
 "For the airlines I used https://github.com/tpope/vim-pathogen used it and
 "the instuctions are there.
-
+let g:airline#extensions#tabline#enabled = 1
 "This is for the error feedbacks
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
