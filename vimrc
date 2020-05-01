@@ -7,30 +7,31 @@
 "To install something new, run :PlugInstall in vim
 call plug#begin()
 
-Plug 'dracula/vim'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'scrooloose/syntastic'
+"Plug 'dracula/vim'
+"Plug 'itchyny/lightline.vim'
+"Plug 'scrooloose/nerdtree'
+"Plug 'vim-airline/vim-airline'
+"Plug 'scrooloose/syntastic'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'Yggdroot/indentLine'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-" Plug 'Valloric/YouCompleteMe'
+"Plug 'Yggdroot/indentLine'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
-autocmd Filetype tex setl updatetime=1
-let g:livepreview_previewer = 'open -a Preview'
+"autocmd Filetype tex setl updatetime=1
+"let g:livepreview_previewer = 'open -a Preview'
 
 "required to used pathogen
 execute pathogen#infect('~/.vim/bundle/{}')
 
-set listchars=tab:\.\
+set listchars=tab:\│\
 set list
 
-"This is to have the line numbers
-set number
+"This is to have the relative number of a line
+set rnu
 
 "This allows the cursor be placed where I click
 set mouse=a
@@ -43,17 +44,14 @@ inoremap <S-Tab> <C-n>
 let mapleader = "\<Space>"
 
 "This to show the command that I am using
-set showcmd
-
-"This is to have the relative number of a line
-set rnu
+"set showcmd
 
 "This show the line that I am writing with highlight
-"set cursorline
-set cursorcolumn
+set cursorline
+"set cursorcolumn
 
 "This highlight my text while I am writing
-set incsearch
+"set incsearch
 
 "This select the colorsheme that I want.
 "colorscheme nord
@@ -63,23 +61,24 @@ set incsearch
 "color dracula
 
 "enables syntax coloring
-syntax on
+"syntax on
+"filetype indent plugin on
 
 "enables indent
-filetype plugin indent on
+"filetype plugin indent on
 
 "For the airlines I used https://github.com/tpope/vim-pathogen used it and
 "the instuctions are there.
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 "This is for the error feedbacks
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
 "Mapping the way of moving throught the buffers
 nnoremap  <C-j> <C-w><C-j>
@@ -89,11 +88,14 @@ nnoremap  <C-h> <C-w><C-h>
 
 "For the NERDTree I installed git clone
 "https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-map <C-n> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
 
 " To install Easymotion git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
 
-
 " This will set the folding level, to fold something use za, to unfold zo and
 " to unfold everything use zR
-set foldmethod=syntax
+"set foldmethod=syntax
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
