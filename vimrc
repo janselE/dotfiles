@@ -2,10 +2,10 @@
 
 "To download stuff for vim you need to install
 "Python, Pathogen and curl
-
 "Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins
 "To install something new, run :PlugInstall in vim
 call plug#begin()
+
 
 "Plug 'dracula/vim'
 "Plug 'itchyny/lightline.vim'
@@ -18,6 +18,7 @@ Plug 'ntpeters/vim-better-whitespace'
 "Plug 'Yggdroot/indentLine'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
@@ -25,10 +26,10 @@ call plug#end()
 "let g:livepreview_previewer = 'open -a Preview'
 
 "required to used pathogen
-execute pathogen#infect('~/.vim/bundle/{}')
+"execute pathogen#infect('~/.vim/bundle/{}')
 
-set listchars=tab:\│\
-set list
+"set listchars=tab:\│\
+"set list
 
 "This is to have the relative number of a line
 set rnu
@@ -67,13 +68,16 @@ set cursorline
 "enables indent
 "filetype plugin indent on
 
-"For the airlines I used https://github.com/tpope/vim-pathogen used it and
-"the instuctions are there.
-"let g:airline#extensions#tabline#enabled = 1
-"This is for the error feedbacks
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"Status line settings
+set statusline=
+set statusline+=\ %M
+set statusline+=\ %y
+set statusline+=\ %r
+set statusline+=\ %F
+set statusline+=%= "Right side settings
+set statusline+=\ %c:%l/%L
+set statusline+=\ %p%%
+set statusline+=\ [%n]
 
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 0
@@ -99,3 +103,4 @@ nnoremap  <C-h> <C-w><C-h>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" to instal ffinder git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
