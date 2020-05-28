@@ -5,8 +5,6 @@
 "Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins
 "To install something new, run :PlugInstall in vim
 call plug#begin()
-
-
 "Plug 'dracula/vim'
 "Plug 'itchyny/lightline.vim'
 "Plug 'scrooloose/nerdtree'
@@ -18,7 +16,17 @@ Plug 'ntpeters/vim-better-whitespace'
 "Plug 'Yggdroot/indentLine'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'tpope/vim-fugitive'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
+Plug 'majutsushi/tagbar'
+Plug 'jacquesbh/vim-showmarks'
 
 call plug#end()
 
@@ -30,9 +38,47 @@ call plug#end()
 
 "set listchars=tab:\│\
 "set list
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+
+let g:UltiSnipsExpandTrigger="<c-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"This is for grovbox this is the color scheme
+colorscheme gruvbox
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"This is to open fuzzy finder
+"this two are very similar
+"I still deciding which one
+"should I stay with
+nnoremap <C-p> :GFiles<CR>
+map <C-n> :Files<CR>
+
+"This trigger autocomplete with tab
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 "This is to have the relative number of a line
 set rnu
+set number
 
 "This allows the cursor be placed where I click
 set mouse=a
@@ -94,13 +140,18 @@ nnoremap  <C-h> <C-w><C-h>
 "https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 "map <C-n> :NERDTreeToggle<CR>
 
-" To install Easymotion git clone https://github.com/easymotion/vim-easymotion ~/.vim/bundle/vim-easymotion
-
 " This will set the folding level, to fold something use za, to unfold zo and
 " to unfold everything use zR
 "set foldmethod=syntax
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" to instal ffinder git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
+
+"Show marks
+nnoremap <leader>m :DoShowMark<cr>
+
+
+"This is to open tagbar
+nnoremap<C-b> :TagbarToggle<CR>
+
+"This is to remap T and K to work
+nnoremap <S-j> <s-l>zz
+nnoremap <S-k> <s-h>zz
