@@ -1,5 +1,6 @@
 " source ~/dotfiles/vimrc
 
+
 "To download stuff for vim you need to install
 "Python, Pathogen and curl
 "Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins
@@ -14,8 +15,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 "Plug 'Yggdroot/indentLine'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+
 Plug 'tpope/vim-fugitive'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -29,7 +31,6 @@ Plug 'majutsushi/tagbar'
 Plug 'jacquesbh/vim-showmarks'
 
 call plug#end()
-
 "autocmd Filetype tex setl updatetime=1
 "let g:livepreview_previewer = 'open -a Preview'
 
@@ -38,13 +39,25 @@ call plug#end()
 
 "set listchars=tab:\│\
 "set list
+
+" this does not fold the lines
+set wrap!
+set smartcase
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set smartindent
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
 
-let g:UltiSnipsExpandTrigger="<c-tab>"
+"Sets the column mark this is to let me know linebreak
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+
+"let g:UltiSnipsExpandTrigger="<c-tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -85,9 +98,9 @@ set mouse=a
 
 "This is to use jk instead of using <esc>
 inoremap jk <esc>
-inoremap <S-Tab> <C-n>
+imap <TAB> <C-n>
 
-"This is another mapp, instead of using \ we can use the space bar
+"This is another map, instead of using \ we can use the space bar
 let mapleader = "\<Space>"
 
 "This to show the command that I am using
@@ -108,7 +121,7 @@ set cursorline
 "color dracula
 
 "enables syntax coloring
-"syntax on
+syntax on
 "filetype indent plugin on
 
 "enables indent
