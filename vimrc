@@ -1,16 +1,16 @@
 " source ~/dotfiles/vimrc
 
-
 "To download stuff for vim you need to install
 "Python, Pathogen and curl
 "Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins
 "To install something new, run :PlugInstall in vim
 call plug#begin()
-"Plug 'dracula/vim'
+Plug 'dracula/vim'
 "Plug 'itchyny/lightline.vim'
 "Plug 'scrooloose/nerdtree'
-"Plug 'vim-airline/vim-airline'
-"Plug 'scrooloose/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/syntastic'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
@@ -22,7 +22,8 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
+
+"Plug 'morhetz/gruvbox'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -51,6 +52,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set clipboard=unnamed
 
 "Sets the column mark this is to let me know linebreak
 set colorcolumn=80
@@ -62,7 +64,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "This is for grovbox this is the color scheme
-colorscheme gruvbox
+"colorscheme gruvbox
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -70,12 +72,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-"This is to open fuzzy finder
-"this two are very similar
-"I still deciding which one
-"should I stay with
-nnoremap <C-p> :GFiles<CR>
-map <C-n> :Files<CR>
+" this is important to add the required libraries
+let g:python3_host_prog = '~/.cache/vim/venv/neovim3/bin/python'
+
 
 "This trigger autocomplete with tab
 inoremap <silent><expr> <TAB>
@@ -98,7 +97,7 @@ set mouse=a
 
 "This is to use jk instead of using <esc>
 inoremap jk <esc>
-imap <TAB> <C-n>
+"imap <TAB> <C-n>
 
 "This is another map, instead of using \ we can use the space bar
 let mapleader = "\<Space>"
@@ -117,26 +116,26 @@ set cursorline
 "colorscheme nord
 
 "This line remove italic so the theme does not get messed up.
-"let g:dracula_italic=0
-"color dracula
+let g:dracula_italic=1
+color dracula
 
 "enables syntax coloring
-syntax on
+"syntax on
 "filetype indent plugin on
 
 "enables indent
 "filetype plugin indent on
 
 "Status line settings
-set statusline=
-set statusline+=\ %M
-set statusline+=\ %y
-set statusline+=\ %r
-set statusline+=\ %F
-set statusline+=%= "Right side settings
-set statusline+=\ %c:%l/%L
-set statusline+=\ %p%%
-set statusline+=\ [%n]
+"set statusline=
+"set statusline+=\ %M
+"set statusline+=\ %y
+"set statusline+=\ %r
+"set statusline+=\ %F
+"set statusline+=%= "Right side settings
+"set statusline+=\ %c:%l/%L
+"set statusline+=\ %p%%
+"set statusline+=\ [%n]
 
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 0
@@ -159,7 +158,7 @@ nnoremap  <C-h> <C-w><C-h>
 
 
 "Show marks
-nnoremap <leader>m :DoShowMark<cr>
+"nnoremap <leader>m :DoShowMark<cr>
 
 
 "This is to open tagbar
@@ -168,3 +167,62 @@ nnoremap<C-b> :TagbarToggle<CR>
 "This is to remap T and K to work
 nnoremap <S-j> <s-l>zz
 nnoremap <S-k> <s-h>zz
+nnoremap <leader>c :%s/\s\+$//e<CR>
+
+
+
+"Airlines
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+"let g:airline_theme = 'gruvbox'
+"let g:airline_theme = 'onedark'
+let g:airline_theme = 'dracula'
+
+set showtabline=2
+set noshowmode
+"End Airlines
+
+" FZF maps
+nmap <leader>p :GFiles<cr>
+" Search and switch buffers
+nmap <leader>b :Buffers<cr>
+" Find files by name under the current directory
+nmap <leader>f :Files<cr>
+" Find files by name under the home directory
+nmap <leader>h :Files ~/<cr>
+" Search content in the current file
+nmap <leader>l :BLines<cr>
+" Search content in the files
+nmap <leader>L :Lines<cr>
+
+
+" This are remmaped to deal with github
+nmap <leader><leader>g :G<cr>
+nmap <leader><leader>l :G pull<cr>
+nmap <leader><leader>p :G push<cr>
+nmap <leader><leader>c :G commit<cr>
+
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "active_filetypes": ["ruby", "java", "php"],
+    \ "passive_filetypes": ["python"] }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+
