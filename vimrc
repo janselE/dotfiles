@@ -5,9 +5,8 @@
 "Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins
 "To install something new, run :PlugInstall in vim
 call plug#begin()
-Plug 'dracula/vim'
-"Plug 'itchyny/lightline.vim'
 "Plug 'scrooloose/nerdtree'
+"Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
@@ -15,15 +14,24 @@ Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 "Plug 'Yggdroot/indentLine'
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 Plug 'tpope/vim-fugitive'
+
+"Colorscheme
+Plug 'dracula/vim'
+Plug 'gilgigilgil/anderson.vim'
+Plug 'relastle/bluewery.vim'
+Plug 'arcticicestudio/nord-vim'
+
+
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -64,13 +72,14 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "This is for grovbox this is the color scheme
-"colorscheme gruvbox
+colorscheme gruvbox
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 
 " this is important to add the required libraries
 let g:python3_host_prog = '~/.cache/vim/venv/neovim3/bin/python'
@@ -114,10 +123,15 @@ set cursorline
 
 "This select the colorsheme that I want.
 "colorscheme nord
+"hi Visual cterm=NONE ctermfg=black ctermbg=white
 
 "This line remove italic so the theme does not get messed up.
-let g:dracula_italic=1
-color dracula
+"let g:dracula_italic=1
+"color dracula
+"colorscheme anderson
+" For dark
+"colorscheme bluewery
+"let g:lightline = { 'colorscheme': 'bluewery' }
 
 "enables syntax coloring
 "syntax on
@@ -182,9 +196,9 @@ let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-"let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'gruvbox'
 "let g:airline_theme = 'onedark'
-let g:airline_theme = 'dracula'
+"let g:airline_theme = 'dracula'
 
 set showtabline=2
 set noshowmode
@@ -211,18 +225,26 @@ nmap <leader><leader>p :G push<cr>
 nmap <leader><leader>c :G commit<cr>
 
 "Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_mode_map = {
     \ "mode": "active",
-    \ "active_filetypes": ["ruby", "java", "php"],
-    \ "passive_filetypes": ["python"] }
+    \ "active_filetypes": ["ruby", "php"],
+    \ "passive_filetypes": ["python", "java"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsSnippetDirectories=[$HOME.'.config/nvim/plugged/ultisnips']
+let g:UltiSnipsSnippetDir=[$HOME.'.config/nvim/plugged/ultisnips']
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
