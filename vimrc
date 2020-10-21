@@ -63,6 +63,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set clipboard=unnamedplus
+"set spell!
 
 "Sets the column mark this is to let me know linebreak
 set colorcolumn=80
