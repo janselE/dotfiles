@@ -9,4 +9,6 @@ The applications I am currently using are:
 * Alacritty
 * NVim
 * Neofetch
+* TMux
+
 
