@@ -236,7 +236,7 @@ nmap <leader><leader>c :G commit<cr>
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": ["ruby", "php"],
-    \ "passive_filetypes": ["python", "java"] }
+    \ "passive_filetypes": ["python", "tex", "java"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1

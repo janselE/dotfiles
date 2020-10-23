@@ -25,5 +25,5 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # ubuntu
-alias open='nautilus'
+alias open='ranger'
 alias zathura='zathura --fork'
