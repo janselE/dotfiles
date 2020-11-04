@@ -1,6 +1,7 @@
 " source ~/dotfiles/vimrc
 
 "To download stuff for vim you need to install
+"VimPlug is better than pathogen
 "Python, Pathogen and curl
 "Plugins run this in terminal -> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  This would allow me to install plugins
 "To install something new, run :PlugInstall in vim
@@ -17,7 +18,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-
 Plug 'tpope/vim-fugitive'
 
 "Colorscheme
@@ -32,8 +32,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'morhetz/gruvbox'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'do':{->coc#util#install()}}
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'majutsushi/tagbar'
@@ -60,7 +62,8 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set clipboard=unnamed
+set clipboard=unnamedplus
+"set spell!
 
 "Sets the column mark this is to let me know linebreak
 set colorcolumn=80
@@ -80,9 +83,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-
-" this is important to add the required libraries
-let g:python3_host_prog = '~/.cache/vim/venv/neovim3/bin/python'
+" this is important to add the required libraries for Coc
+let g:python3_host_prog = '~/home/jansel/miniconda3/envs/neovim/bin'
+set updatetime=300
+"let g:coc_force_debug = 1
 
 
 "This trigger autocomplete with tab
@@ -232,7 +236,7 @@ nmap <leader><leader>c :G commit<cr>
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": ["ruby", "php"],
-    \ "passive_filetypes": ["python", "java"] }
+    \ "passive_filetypes": ["python", "tex", "java"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
