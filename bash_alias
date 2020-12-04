@@ -23,6 +23,7 @@ alias node=nodejs
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias sshs='ssh -o TCPKeepAlive=Yes -L 16006:127.0.0.1:6006 jansel@0.tcp.ngrok.io -p10686'
 
 # ubuntu
 alias open='ranger'
