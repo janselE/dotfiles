@@ -25,6 +25,7 @@ Plug 'dracula/vim'
 Plug 'gilgigilgil/anderson.vim'
 Plug 'relastle/bluewery.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'crusoexia/vim-monokai'
 
 
 
@@ -87,7 +88,6 @@ nmap <silent> gr <Plug>(coc-references)
 let g:python3_host_prog = '~/home/jansel/miniconda3/envs/neovim/bin'
 set updatetime=300
 "let g:coc_force_debug = 1
-
 
 "This trigger autocomplete with tab
 inoremap <silent><expr> <TAB>
