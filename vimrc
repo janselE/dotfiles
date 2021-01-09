@@ -124,7 +124,7 @@ let mapleader = "\<Space>"
 
 "This show the line that I am writing with highlight
 set cursorline
-"set cursorcolumn
+set cursorcolumn
 
 "This highlight my text while I am writing
 "set incsearch
