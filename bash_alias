@@ -23,8 +23,8 @@ alias node=nodejs
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias sshsp='ssh -o TCPKeepAlive=Yes -L 16006:127.0.0.1:6006 jansel@0.tcp.ngrok.io -p10686'
-alias sshs='ssh -o TCPKeepAlive=Yes jansel@0.tcp.ngrok.io -p10686'
+alias sshsp='ssh -o TCPKeepAlive=Yes -L 16006:127.0.0.1:6007 jansel@4.tcp.ngrok.io -p10547'
+alias sshs='ssh -o TCPKeepAlive=Yes jansel@4.tcp.ngrok.io -p10547'
 
 # Ubuntu check if it is mac
 if ! [ "$(uname)" == "Darwin" ]; then
