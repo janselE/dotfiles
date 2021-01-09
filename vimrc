@@ -9,7 +9,7 @@ call plug#begin()
 "Plug 'scrooloose/nerdtree'
 "Plug 'itchyny/lightline.vim'
 Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax' 
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 
 Plug 'vim-airline/vim-airline'
@@ -124,7 +124,7 @@ let mapleader = "\<Space>"
 
 "This show the line that I am writing with highlight
 set cursorline
-"set cursorcolumn
+set cursorcolumn
 
 "This highlight my text while I am writing
 "set incsearch
