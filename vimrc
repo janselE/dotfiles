@@ -58,6 +58,9 @@ call plug#end()
 " this does not fold the lines
 set wrap!
 set smartcase
+set guicursor=
+set nohlsearch
+set hidden
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set smartindent
