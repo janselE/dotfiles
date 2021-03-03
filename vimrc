@@ -24,6 +24,8 @@ Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'preservim/vimux'
+
 "Colorscheme
 Plug 'dracula/vim'
 Plug 'gilgigilgil/anderson.vim'
@@ -128,6 +130,17 @@ let mapleader = "\<Space>"
 "This show the line that I am writing with highlight
 set cursorline
 set cursorcolumn
+
+" vv to generate new vertical split
+nnore <silent> vv <c-w>v
+
+" vimux commands
+map <leader>vp :VimuxPromptCommand<cr>
+map <leader>vl :VimuxRunLastCommand<cr>
+map <leader>vi :VimuxInspectRunner<cr>
+map <leader>vz :VimuxZoomRunner<cr>
+
+
 
 "This highlight my text while I am writing
 "set incsearch
